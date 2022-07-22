@@ -34,8 +34,17 @@
 # What was the name of the function we have seen to check the length of a container?  Use your CLI to access the Python documentation and get help(len).
 
 
+from math import ceil
+from turtle import position
+
+
 def one(input1, input2):
-    return ""
+    if len(input1) > len(input2):
+        return input1
+    elif len(input2) > len(input1):
+        return input2
+    else:
+        return (f"{input1} {input2}")
 
    # <QUESTION 2>
 
@@ -61,7 +70,16 @@ def one(input1, input2):
 
 
 def two(input):
-    return ""
+    input = input.lower()
+    is_bert = input.find('bert')
+    if is_bert == -1:
+        return ""
+    first_bert = input[(is_bert + 4): ]
+    is_bert = first_bert.find('bert')
+    if is_bert == -1:
+        return ""
+    second_bert = first_bert[: is_bert :]
+    return second_bert
 
 
     # <QUESTION 3>
@@ -85,7 +103,13 @@ def two(input):
 
 
 def three(arg1):
-    return ""
+    if arg1 % 3 == 0 and arg1 % 5 == 0:
+        return 'fizzbuzz'
+    if arg1 % 3 == 0:
+        return 'fizz'
+    if arg1 % 5 == 0:
+        return  'buzz'
+    return "null"
 
     # <QUESTION 4>
 
@@ -111,7 +135,16 @@ def three(arg1):
 
 
 def four(arg1):
-    return ""
+    list1 = arg1.split()
+    biggest = 0
+    for item in list1:
+        sum = 0
+        for digit in item:
+            sum += int(digit)
+        if sum > biggest:
+            biggest = sum
+
+    return biggest
 
     # <QUESTION 5>
 
@@ -140,7 +173,17 @@ def four(arg1):
 
 
 def five(input):
-    return ""
+    list = input.split(',')
+    names = []
+    for entry in range(0,len(list),4):
+        if list[entry+2] == 'True':
+            continue
+        else:
+            if list[entry] in names:
+                continue
+            else:
+                names.append(list[entry])
+    return names
 
     # <QUESTION 6>
 
@@ -161,6 +204,14 @@ def five(input):
 
 
 def six(input):
+    for letter in range(len(input)):
+        if input[letter] == 'i':
+            if input[letter + 1 ] == 'e':
+                if input[letter - 1] == 'c':
+                    return False
+                return True
+
+
     return ""
 
     # <QUESTION 7>
@@ -179,7 +230,14 @@ def six(input):
 
 
 def seven(input):
-    return ""
+    input = input.lower()
+    v_list = ['a','e','i','o','u']
+    vowels = 0
+    for letter in input:
+        if letter in v_list:
+            vowels += 1
+
+    return vowels
 
     # <QUESTION 8>
 
@@ -198,7 +256,12 @@ def seven(input):
 
 
 def eight(input):
-    return ""
+    previous = input
+    for number in range(input, 1, -1):
+        if number == previous:
+            continue
+        previous = previous * number
+    return previous
 
     # <QUESTION 9>
 
@@ -220,7 +283,10 @@ def eight(input):
 
 
 def nine(inputString, char):
-    return ""
+    string = inputString.replace(' ' , '')
+    if string.find(char) != -1:
+        return string.find(char) + 1
+    return -1
 
     # <QUESTION 10>
 
@@ -241,4 +307,12 @@ def nine(inputString, char):
 
 
 def ten(string, int, char):
-    return ""
+    string = string.lower()
+    string = string.replace(' ' , '')
+    if int > len(string):
+        return False
+    if string[int-1] == char:
+        return True
+
+
+    return False
